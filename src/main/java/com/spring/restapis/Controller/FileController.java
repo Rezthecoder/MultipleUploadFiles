@@ -17,6 +17,11 @@ public class FileController {
 
    private Logger logger = (Logger) LoggerFactory.getLogger(FileController.class);
 
+   @GetMapping("/test")
+   public String test() {
+        return "Yes it is working";
+   }
+
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadMultipleFile(@RequestParam("files") MultipartFile[] files) {
@@ -24,7 +29,6 @@ public class FileController {
 Arrays.stream(files).forEach(file -> {
             this.logger.info("file name: " + file.getOriginalFilename());
             this.logger.info("file content:" + file.getContentType());
-            this.logger.info("file" + file.getClass());
        
         });
 
